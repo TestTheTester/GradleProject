@@ -44,5 +44,5 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(Build.SourcesDirectory)/build/jacoco/test/jacocoTestReport.xml'
-    reportDirectory: '$(Build.SourcesDirectory)/build/jacoco/test/html'
+    summaryFileLocation: '$(Build.ArtifactStagingDirectory)/build/jacoco/test/jacocoTestReport.xml'
+    reportDirectory: '$(Build.ArtifactStagingDirectory)/build/jacoco/test/html'
