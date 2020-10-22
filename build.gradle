@@ -18,3 +18,10 @@ jar {
         attributes 'Main-Class': 'Calculator'
     }
 }
+
+test {
+    filter {
+        //include all test
+        includeTestsMatching "*Test"
+    }
+}
