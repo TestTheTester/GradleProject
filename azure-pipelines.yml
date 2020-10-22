@@ -34,15 +34,16 @@ steps:
     tasks: 'test'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
-
-- task: Gradle@2
-  inputs:
-    gradleWrapperFile: 'gradlew'
-    tasks: 'jacocoTestReport'
-
+    codeCoverageToolOption: 'JaCoCo'
+    codeCoverageClassFilesDirectories: 'build/classes/java/main'
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: true
+    sqGradlePluginVersionChoice: 'build'
 
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(Build.ArtifactStagingDirectory)/build/jacoco/test/jacocoTestReport.xml'
-    reportDirectory: '$(Build.ArtifactStagingDirectory)/build/jacoco/test/html'
+    summaryFileLocation: '$(Build.SourcesDirectory)/build/reports/jacoco/test/jacocoTestReport.xml'
+    reportDirectory: '$(Build.SourcesDirectory)/build/reports/jacoco/test/html'
+
+
