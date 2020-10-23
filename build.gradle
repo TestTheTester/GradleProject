@@ -31,9 +31,11 @@ test {
 
 jacoco {
     toolVersion = "0.8.5"
-    reportsDir = file("$buildDir/build/reports/jacoco")
 }
 
 jacocoTestReport {
     dependsOn test
+    reports {
+        xml.enabled true
+    }
 }
