@@ -34,10 +34,11 @@ steps:
     tasks: 'test'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
-    codeCoverageToolOption: 'JaCoCo'
-    codeCoverageClassFilesDirectories: 'build/classes/java/main'
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
+
+- task: Gradle@2
+  inputs:
+    gradleWrapperFile: 'gradlew'
+    tasks: 'jacocoTestReport'
 
 - task: PublishCodeCoverageResults@1
   inputs:
