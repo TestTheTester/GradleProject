@@ -49,7 +49,7 @@ steps:
 - task: CopyFiles@2
   inputs:
     SourceFolder: '$(build.SourcesDirectory)'
-    Contents: '**/*.jar'
+    Contents: '**/Calculator*.jar'
     TargetFolder: '$(build.artifactstagingdirectory)'
 
 
