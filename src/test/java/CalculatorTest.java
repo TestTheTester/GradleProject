@@ -19,6 +19,6 @@ public class CalculatorTest {
         calc.setInputA(10);
         calc.setInputB(5);
         calc.minus();
-        assertEquals("Calculation failed:", 5, calc.getResult());
+        assertEquals("Calculation failed:", 6, calc.getResult());
     }
 }
