@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- none
+- master
 
 pool:
   vmImage: 'windows-latest'
@@ -58,6 +58,7 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
+
 - task: UniversalPackages@0
   inputs:
     command: 'publish'
@@ -65,5 +66,6 @@ steps:
     feedsToUsePublish: 'internal'
     vstsFeedPublish: '7de0b821-99e8-4560-9da7-cfcab40f60e2/439ece79-dce4-4e91-81e0-8f4810168827'
     vstsFeedPackagePublish: 'test'
-    versionOption: 'patch'
+    versionOption: 'minor'
+    packagePublishDescription: 'This is sample application'
     verbosity: 'Debug'
