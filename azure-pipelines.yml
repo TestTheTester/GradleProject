@@ -57,14 +57,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-
-- task: UniversalPackages@0
-  inputs:
-    command: 'publish'
-    publishDirectory: '$(Build.ArtifactStagingDirectory)'
-    feedsToUsePublish: 'internal'
-    vstsFeedPublish: '7de0b821-99e8-4560-9da7-cfcab40f60e2/439ece79-dce4-4e91-81e0-8f4810168827'
-    vstsFeedPackagePublish: 'App'
-    versionOption: 'major'
-    packagePublishDescription: 'jar file from build'
-    verbosity: 'Information'
