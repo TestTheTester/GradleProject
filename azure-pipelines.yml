@@ -3,11 +3,20 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
-- master
+parameters:
+  - name: image
+    displayName: Pool Image
+    type: string
+    default: 'windows-latest'
+    values:
+      - 'windows-latest'
+      - 'ubuntu-latest'
+      - 'macOS-latest'
+
+trigger: none
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: ${{ parameters.image }}
 
 steps:
 - task: Gradle@2
