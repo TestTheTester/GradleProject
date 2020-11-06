@@ -12,6 +12,11 @@ parameters:
       - 'windows-latest'
       - 'ubuntu-latest'
       - 'macOS-latest'
+  - name: test
+    displayName: Run Test?
+    type: boolean
+    default: false
+
 
 trigger: none
 
@@ -19,6 +24,7 @@ pool:
   vmImage: ${{ parameters.image }}
 
 steps:
+- script: echo building $(Build.BuildNumber)
 - task: Gradle@2
   inputs:
     workingDirectory: ''
