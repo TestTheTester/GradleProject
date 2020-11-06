@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'jacoco'
-    id 'maven-publish'
 }
 
 group 'org.example'
@@ -39,27 +38,4 @@ jacocoTestReport {
     reports {
         xml.enabled true
     }
-}
-
-publishing { 
-    publications { 
-        myPublication(MavenPublication) { 
-            groupId 'sample' 
-            artifactId 'calc' 
-            version '1' 
-            artifact './build/libs/Calculator-1.0-SNAPSHOT.jar' 
-        } 
-    } 
-
-    // Repositories *to* which Gradle can publish artifacts 
-    repositories { 
-        maven { 
-            url 'https://pkgs.dev.azure.com/y509029/_packaging/GitHubGradlePOC' 
-            credentials { 
-                username "Azure DevOps Services" 
-                //The Azure DevOps Services build system will use the "SYSTEM_ACCESSTOKEN" to authenticate to Azure DevOps Services feeds 
-                password System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN") != null ? System.getenv("AZURE_ARTIFACTS_ENV_ACCESS_TOKEN") : vstsMavenAccessToken 
-            } 
-        } 
-    } 
 }
