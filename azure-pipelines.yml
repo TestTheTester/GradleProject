@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+- none
 
 pool:
   vmImage: 'windows-latest'
@@ -50,10 +50,20 @@ steps:
   inputs:
     SourceFolder: '$(build.SourcesDirectory)'
     Contents: '**/Calculator*.jar'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
+- task: UniversalPackages@0
+  inputs:
+    command: 'publish'
+    publishDirectory: '$(Build.ArtifactStagingDirectory)'
+    feedsToUsePublish: 'internal'
+    vstsFeedPublish: '7de0b821-99e8-4560-9da7-cfcab40f60e2/439ece79-dce4-4e91-81e0-8f4810168827'
+    vstsFeedPackagePublish: 'test'
+    versionOption: 'patch'
+    verbosity: 'Debug'
